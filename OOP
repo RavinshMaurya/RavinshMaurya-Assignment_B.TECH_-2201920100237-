@@ -1,0 +1,64 @@
+Consider a simple banking system where we need to manage customers and their accounts. Each customer has a name, an account number, and a balance. You need to implement this system using OOP principles.
+
+Create a Customer class with the following properties:
+
+Name (string)
+Account Number (int)
+Balance (float)
+The Customer class should have the following methods:
+
+deposit(amount: float) – Adds the specified amount to the balance.
+withdraw(amount: float) – Subtracts the specified amount from the balance (if sufficient funds are available).
+display_account_info() – Displays the account information (name, account number, and balance).
+Create an instance of the Customer class and perform the following:
+
+Deposit $500 into the account.
+Withdraw $200 from the account.
+Display the account information.
+
+code 
+#include <iostream>
+#include <string>
+using namespace std;
+
+
+class Customer {
+private:
+    string name;
+    int accountNumber;
+    float balance;
+
+public:
+    Customer(string n, int accNum, float bal) {
+        name = n;
+        accountNumber = accNum;
+        balance = bal;
+    }
+    void deposit(float amount) {
+        balance += amount;
+        cout << "Deposited $" << amount << ". New balance is $" << balance << ".\n";
+    }
+        void withdraw(float amount) {
+        if (amount <= balance) {
+            balance -= amount;
+            cout << "Withdrew $" << amount << ". New balance is $" << balance << ".\n";
+        } else {
+            cout << "Insufficient funds!\n";
+        }
+    }
+        void displayAccountInfo() {
+        cout << "Account holder: " << name << endl;
+        cout << "Account number: " << accountNumber << endl;
+        cout << "Balance: $" << balance << endl;
+    }
+};
+
+int main() {
+   
+    Customer customer1("John Doe", 123456, 1000.0);
+    customer1.deposit(500);  // Deposit $500
+    customer1.withdraw(200); // Withdraw $200
+    customer1.displayAccountInfo();  // Display account information
+
+    return 0;
+}
